@@ -57,4 +57,23 @@ public class MatTest {
 
         assertEquals(expected.toString(), m1.multiply(m2).toString());
     }
+
+    @Test
+    public void shouldMultiplyRectMatrices() {
+        Mat m1 = new Mat(2, 3);
+        Mat m2 = new Mat(3, 2);
+        Mat expected = new Mat(2, 2);
+
+        m1.setRow(0, new double[] { 1, 2, 3 });
+        m1.setRow(1, new double[] { 1, 2, 3 });
+
+        m2.setRow(0, new double[] { 1, 2 });
+        m2.setRow(1, new double[] { 1, 2 });
+        m2.setRow(2, new double[] { 1, 2 });
+
+        expected.setRow(0, new double[] { 6, 12 });
+        expected.setRow(1, new double[] { 6, 12 });
+
+        assertEquals(expected.toString(), m1.multiply(m2).toString());
+    }
 }
