@@ -62,17 +62,32 @@ public class Mat {
 
     public Mat multiply(Mat other) {
         Mat result = new Mat(getHeight(), other.getWidth());
-        int accumulator;
-        int resultColPointer = 0;
-        for (int row = 0; row < result.getHeight(); row++) {
-            for (resultColPointer = 0; resultColPointer < getWidth(); resultColPointer++) {
-                accumulator = 0;
-                for (int col = 0; col < result.getWidth(); col++)
-                    accumulator += getElement(row, col) * other.getElement(col, row);
-                result.setElement(row, resultColPointer, accumulator);
+
+        for (int i = 0; i < result.getHeight(); i++) {
+            for (int j = 0; j < result.getWidth(); j++) {
+                int sum = 0;
+                for (int k = 0; k < getWidth(); k++) {
+                    sum += getElement(i, k) * other.getElement(k, j);
+                }
+                result.setElement(i, j, sum);
             }
         }
+
         return result;
+    }
+
+    public double[] flatten() {
+        double[] result = new double[getHeight() * getWidth()];
+        for (int i = 0; i < getHeight(); i++)
+            for (int j = 0; j < getWidth(); j++)
+                result[i * getWidth() + j] = getElement(i, j);
+        return result;
+    }
+
+    public void fillWith(double[] data) {
+        for (int i = 0; i < data.length; i++) {
+            setElement(i / getWidth(), i % getWidth(), data[i]);
+        }
     }
 
     public void setRow(int row, double[] data) {
