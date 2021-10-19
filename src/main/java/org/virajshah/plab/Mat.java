@@ -1,7 +1,5 @@
 package org.virajshah.plab;
 
-import java.util.Arrays;
-
 public class Mat {
     public double[][] data;
 
