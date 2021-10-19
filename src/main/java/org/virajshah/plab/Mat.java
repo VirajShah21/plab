@@ -1,7 +1,7 @@
 package org.virajshah.plab;
 
 public class Mat {
-    private double[][] data;
+    protected double[][] data;
 
     public Mat(int n, int m) {
         data = new double[n][m];
