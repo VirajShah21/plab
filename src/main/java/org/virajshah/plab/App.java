@@ -10,7 +10,7 @@ import java.util.List;
 public class App {
 
     public static void main(String[] args) {
-        HashMap<Integer, List<Double>> runtimes = new HashMap<>();
+        HashMap<Integer, long[]> runtimes = new HashMap<>();
 
         for (int sqSize = 2; sqSize < 1000; sqSize++) {
             Mat series1 = new Mat(sqSize, sqSize);
@@ -18,9 +18,17 @@ public class App {
             MatSIMD parallel1 = new MatSIMD(sqSize, sqSize);
             MatSIMD parallel2 = new MatSIMD(sqSize, sqSize);
 
-            series1.multiply(series2);
+            long start, stop;
 
-            parallel1.multiply(parallel1);
+            start = System.currentTimeMillis();
+            series1.multiply(series2);
+            stop = System.currentTimeMillis();
+            runtimes.put(sqSize, new long[] { stop - start, 0 });
+
+            start = System.currentTimeMillis();
+            parallel1.multiply(parallel2);
+            stop = System.currentTimeMillis();
+            runtimes.get(sqSize)[1] = stop - start;
         }
     }
 
