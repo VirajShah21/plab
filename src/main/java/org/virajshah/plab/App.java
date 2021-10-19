@@ -13,7 +13,7 @@ public class App {
     public static void main(String[] args) {
         HashMap<Integer, long[]> runtimes = new HashMap<>();
 
-        for (int sqSize = 50; sqSize < 200; sqSize++) {
+        for (int sqSize = 1; sqSize < 250; sqSize++) {
             System.out.printf("Running for matrix with size %s\n", sqSize);
             Mat series1 = new Mat(sqSize, sqSize);
             Mat series2 = new Mat(sqSize, sqSize);
