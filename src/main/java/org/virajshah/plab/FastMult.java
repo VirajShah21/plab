@@ -25,7 +25,7 @@ public class FastMult {
         result = new double[mat1.getHeight()][mat2.getWidth()];
         i = 0;
         j = 0;
-        threads = new Thread[4];
+        threads = new Thread[numThreads];
         for (int i = 0; i < threads.length; i++)
             threads[i] = new Worker(this);
     }
