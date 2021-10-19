@@ -1,5 +1,7 @@
 package org.virajshah.plab;
 
+import java.util.Arrays;
+
 public class Mat {
     protected double[][] data;
 
@@ -92,5 +94,13 @@ public class Mat {
 
     public void setRow(int row, double[] data) {
         this.data[row] = data;
+    }
+
+    public double[] getRow(int row) {
+        return this.data[row].clone();
+    }
+
+    public double[] getCol(int col) {
+        return this.data[col].clone();
     }
 }
