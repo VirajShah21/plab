@@ -3,7 +3,7 @@ package org.virajshah.plab;
 import java.util.Arrays;
 
 public class Mat {
-    protected double[][] data;
+    public double[][] data;
 
     public Mat(int n, int m) {
         data = new double[n][m];
